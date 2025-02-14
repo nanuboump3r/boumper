@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boumper X</title>
+    <style>
+        /* Estilos de fondo y fuente */
+        body, html {
+            font-family: 'Arial', sans-serif;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            cursor: none; /* Ocultar cursor estándar */
+        }
+
+        /* Cursor personalizado en forma de "X" */
+        .custom-cursor {
+            position: fixed;
+            width: 30px;
+            height: 30px;
+            font-size: 30px;
+            color: #ff3333;
+            text-align: center;
+            line-height: 30px;
+            pointer-events: none;
+            transition: transform 0.1s ease;
+            z-index: 1000;
+        }
+
+        /* Sección inicial a pantalla completa */
+        .fullscreen-section {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Contenedor principal del mensaje inicial */
+        .container {
+            text-align: center;
+            max-width: 800px;
+            padding: 70px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            z-index: 1;
+            animation: flash 1.5s infinite alternate;
+            transition: transform 0.3s ease;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #ff3333;
+            letter-spacing: 5px;
+            margin: 0;
+            animation: glitch 1s infinite;
+        }
+
+        /* Animación glitch */
+        @keyframes glitch {
+            0% { transform: translate(0); opacity: 1; }
+            20% { transform: translate(-3px, 3px); opacity: 0.8; }
+            40% { transform: translate(3px, -3px); opacity: 1; }
+            60% { transform: translate(-2px, 2px); opacity: 0.9; }
+            80% { transform: translate(2px, -2px); opacity: 1; }
+            100% { transform: translate(0); opacity: 1; }
+        }
+
+        /* Carita "X_X" */
+        .face {
+            font-size: 6em;
+            color: #ff3333;
+            text-shadow: 0 0 5px #ff3333, 0 0 20px #ffffff;
+            margin-top: 10px;
+            animation: faceFlash 1s infinite alternate;
+        }
+
+        /* Animación para la cara */
+        @keyframes faceFlash {
+            0% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(-5deg); }
+            100% { transform: scale(1) rotate(0deg); }
+        }
+
+        /* Fondo de "X" y "O" flotantes */
+        .background-letters {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .background-letters span {
+            position: absolute;
+            font-size: 3em;
+            color: rgba(255, 0, 0, 0.2);
+            animation: floatLetters 6s infinite alternate ease-in-out;
+        }
+
+        /* Movimiento de las "X" y "O" en el fondo */
+        @keyframes floatLetters {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
+            50% { opacity: 0.7; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0.3; }
+        }
+
+        /* Secciones adicionales */
+        .section {
+            padding: 50px;
+            text-align: center;
+            font-size: 1.5em;
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Estilo de los títulos de las secciones en rojo */
+        .section h2 {
+            color: #ff3333;
+        }
+
+        /* Botón de llamada a la acción */
+        .button {
+            background-color: #ff3333;
+            color: #fff;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 0 10px #ff3333, 0 0 20px #ffffff;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .button:hover {
+            background-color: #cc0000;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+<!-- Cursor personalizado en forma de "X" -->
+<div class="custom-cursor">X</div>
+
+<!-- Sección de pantalla completa -->
+<div class="fullscreen-section">
+    <div class="container">
+        <h1>Boumper X</h1>
+        <div class="face">X_X</div>
+        <a href="https://www.youtube.com/watch?v=tEytobdMnac" class="button" target="_blank">Escucha Ahora</a>
+    </div>
+</div>
+
+<!-- Fondo de "X" y "O" flotantes -->
+<div class="background-letters">
+    <span style="top: 10%; left: 20%; font-size: 4em;">X</span>
+    <span style="top: 30%; left: 80%; font-size: 5em;">O</span>
+    <span style="top: 50%; left: 40%; font-size: 3em;">X</span>
+    <span style="top: 70%; left: 60%; font-size: 6em;">O</span>
+    <span style="top: 90%; left: 10%; font-size: 4em;">X</span>
+    <span style="top: 15%; left: 50%; font-size: 5em;">O</span>
+    <span style="top: 75%; left: 15%; font-size: 4em;">X</span>
+    <span style="top: 40%; left: 85%; font-size: 3em;">O</span>
+</div>
+
+<!-- Secciones adicionales -->
+<div class="section fade-in-section">
+    <h2>Sobre el Artista</h2>
+    <p>Boumper X es un innovador de la música electrónica, combinando ritmos oscuros con visuales impactantes.</p>
+</div>
+
+<div class="section fade-in-section">
+    <h2>Discografía</h2>
+    <p>Explora los álbumes más recientes y los éxitos del artista.</p>
+</div>
+
+<div class="section fade-in-section">
+    <h2>Próximos Conciertos</h2>
+    <p>Descubre las próximas fechas y lugares donde podrás ver a Boumper X en vivo.</p>
+</div>
+
+<div class="section fade-in-section">
+    <h2>Contacto</h2>
+    <p>Sigue a Boumper X en redes sociales para más actualizaciones.</p>
+</div>
+
+<script>
+    // JavaScript para activar las secciones adicionales al hacer scroll
+    const sections = document.querySelectorAll('.section');
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+
+    // Código para el cursor personalizado
+    const cursor = document.querySelector('.custom-cursor');
+    document.addEventListener('mousemove', e => {
+        cursor.style.top = e.clientY + 'px';
+        cursor.style.left = e.clientX + 'px';
+    });
+</script>
+
+</body>
+</html>
